@@ -1,0 +1,75 @@
+ header {
+     background-color: #A4A4EF;
+ }
+
+
+ body {
+    display: grid;
+     background-color: beige;
+     grid-template-columns: auto;
+
+ }
+
+ h1 {
+     text-align: center;
+     margin-top: 20px;
+
+ }
+
+ .top {
+     background-color: beige;
+     padding: 20px;
+     margin: 20px 0;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+
+ }
+
+ .ajoutem {
+     padding: 10px 20px;
+     background-color: #4caf50;
+     border-radius: 8px;
+     cursor: pointer;
+
+ }
+
+
+ .etages {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     width: 90%;
+     margin: auto;
+ }
+
+ .zone {
+     background: white;
+     border: 1px solid #ddd;
+     padding: 15px;
+     border-radius: 5px;
+     min-height: 180px;
+     background-color: #A4A4EF;
+ }
+
+ .form form {
+     display: none;
+     background-color: white;
+     width: 300px;
+     margin-top: 20px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px #0003;
+ }
+
+ .form input {
+     padding: 8px;
+     margin-bottom: 10px;
+     border-radius: 6px;
+     border: 1px solid #aaa
+ }
+
+ .container {
+     margin-top: 40px;
+     display: flex;
+     justify-content: center;
+ }
