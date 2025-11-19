@@ -116,7 +116,26 @@ h1 {
     background-color: green;
     border-color:green;
 }
+ .remove{
+    background-color: red;
+    color: white;
+    border:none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+ }
+ .remove:hover{
+    background-color: #e60000;
+    transform: scale(1.1);
+ }
+ 
 
 /*        RESPONSIVE MOBILE     */
 

@@ -10,6 +10,11 @@ btnAdd.addEventListener('click', () => {
         formContainer.style.display = 'block';
     }
 });
+const sarra = document.getElementById('sarra');
+sarra.addEventListener('click', ()=>{
+    console.log("hello");
+    
+});
 
 // Gestion du formulaire 
 const simpleForm = formContainer.querySelector('form');
@@ -44,9 +49,3 @@ simpleForm.addEventListener('submit', (e) => {
 });
 
 
-const zoneButtons = document.querySelectorAll('.btn-add-to-zone');
-zoneButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        alert('Ici on peut ajouter un employé depuis "Unassigned Staff" vers la zone : ' + button.dataset.zone);
-    });
-});
