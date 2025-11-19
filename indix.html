@@ -14,15 +14,28 @@
     </header>
 
     <div class="main-container">
-        <!-- Rectangle Gauche -->
         <div class="sidebar">
-            <button id="btnadd" class="ajoutem">ajouter employe</button>
+            <button id="btnadd" class="ajoutem"> + ajouter employe</button>
+            <section aria-label="unassigned staf" class="unassigned">
+                <h2>unassigned staff</h2>
+                <ul id="unassignedlist" class="person-list"></ul>
+            </section>
             <div id="formcontainer" class="form">
                 <form>
                     <label>Nom:</label>
                     <input type="text" placeholder="ex:sarra">
 
-                    <label>Role:</label>
+                    <label>Role:
+                        <select name="role" required>
+                            <option value="">-- choisir --</option>
+                            <option>réceptionniste</option>
+                            <option>technicien IT</option>
+                            <option>agent de sécurité</option>
+                            <option>Manager</option>
+                            <option>Nettoyage</option>
+                            <option>Autre</option>
+                        </select>
+                    </label>
                     <input type="text" placeholder="ex:techniciens IT">
 
                     <label>Telephone:</label>
@@ -36,38 +49,44 @@
                 </form>
             </div>
         </div>
-    <div class="etages">
-        <div class="zone" data-role="all" data-max="6">
-            <h3>Salle de conférence</h3>
-            <ul class="zonelist"></ul>
-        </div>
+        <div class="etages">
+            <div class="zone" data-role="all" data-max="6">
+                <h3>Salle de conférence</h3>
+                <button class="btn-add-to-zone" data-zone="zone-conference">+</button>
+                <ul class="zonelist"></ul>
+            </div>
 
-        <div class="zone" data-role="réceptionniste" data-max="5">
-            <h3>Réception</h3>
-            <ul class="zonelist"></ul>
-        </div>
+            <div class="zone" data-role="réceptionniste manager" data-max="5">
+                <h3>Réception</h3>
+                <button class="btn-add-to-zone" data-zone="zone-reception">+</button>
+                <ul class="zonelist"></ul>
+            </div>
 
-        <div class="zone" data-role="technicien IT" data-max="5">
-            <h3>Salle des serveurs</h3>
-            <ul class="zonelist"></ul>
-        </div>
+            <div class="zone" data-role="technicien IT manager" data-max="5">
+                <h3>Salle des serveurs</h3>
+                <button class="btn-add-to-zone" data-zone="zone-serveurs">+</button>
+                <ul class="zonelist"></ul>
+            </div>
 
-        <div class="zone" data-role="agent de sécurité" data-max="5">
-            <h3>Salle de sécurité</h3>
-            <ul class="zonelist"></ul>
-        </div>
+            <div class="zone" data-role="agent de sécurité manager" data-max="5">
+                <h3>Salle de sécurité</h3>
+                <button class="btn-add-to-zone" data-zone="zone-securite">+</button>
+                <ul class="zonelist"></ul>
+            </div>
 
-        <div class="zone" data-role="all" data-max="6">
-            <h3>Salle du personnel</h3>
-            <ul class="zonelist"></ul>
-        </div>
+            <div class="zone" data-role="all" data-max="6">
+                <h3>Salle du personnel</h3>
+                <button class="btn-add-to-zone" data-zone="zone-personnel">+</button>
+                <ul class="zonelist"></ul>
+            </div>
 
-        <div class="zone" data-role="all" data-max="6">
-            <h3>Salle d’archives</h3>
-            <ul class="zonelist"></ul>
+            <div class="zone" data-role="all" data-max="6">
+                <h3>Salle d’archives</h3>
+                <button class="btn-add-to-zone" data-zone="zone-archives">+</button>
+                <ul class="zonelist"></ul>
+            </div>
         </div>
-    </div>
-<script src="script.js"></script>
+        <script src="script.js"></script>
 
 </body>
 
