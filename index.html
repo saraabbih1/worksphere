@@ -21,33 +21,46 @@
                 <ul id="unassignedlist" class="person-list"></ul>
             </section>
             <div id="formcontainer" class="form">
-                <form>
-                    <label>Nom:</label>
-                    <input type="text" placeholder="ex:sarra">
+    <form>
 
-                    <label>Role:
-                        <select name="role" required>
-                            <option value="">-- choisir --</option>
-                            <option>réceptionniste</option>
-                            <option>technicien IT</option>
-                            <option>agent de sécurité</option>
-                            <option>Manager</option>
-                            <option>Nettoyage</option>
-                            <option>Autre</option>
-                        </select>
-                    </label>
-                    <input type="text" placeholder="ex:techniciens IT">
+        <label>
+            Nom:
+            <input type="text" placeholder="ex:sarra">
+        </label>
 
-                    <label>Telephone:</label>
-                    <input type="number" placeholder="0625883148">
+        <label class="role-label">
+            Role:
+            <select name="role" required>
+                <option value="">-- choisir --</option>
+                <option>réceptionniste</option>
+                <option>technicien IT</option>
+                <option>agent de sécurité</option>
+                <option>Manager</option>
+                <option>Nettoyage</option>
+                <option>Autre</option>
+            </select>
+        </label>
 
-                    <label>Email:</label>
-                    <input type="text" placeholder="gmail.com">
+        <label>
+            Téléphone:
+            <input type="tel" placeholder="0625883148" required>
+        </label>
 
-                    <label>photo:</label>
-                    <input type="url" placeholder="image">
-                </form>
-            </div>
+        <label>
+            Email:
+            <input type="email" placeholder="gmail.com">
+        </label>
+
+        <label>
+            Photo:
+            <input type="url" placeholder="image">
+        </label>
+
+        <button class="button-ajouter" type="submit">Ajouter</button>
+
+    </form>
+</div>
+
         </div>
         <div class="etages">
             <div class="zone" data-role="all" data-max="6">

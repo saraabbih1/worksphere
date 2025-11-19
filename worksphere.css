@@ -66,16 +66,8 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
 
-.form form {
-    display: none;
-    background-color: white;
-    width: 100%;
-    max-width: 300px;
-    margin-top: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #0003;
-    padding: 20px;
-}
+
+
 
 .form input {
     padding: 8px;
@@ -83,6 +75,46 @@ h1 {
     width: 100%;
     border-radius: 6px;
     border: 1px solid #aaa;
+    display: block;
+}
+#formcontainer{
+    display: none;
+    background-color: white;
+    width: 100%;
+    max-width: 300px;
+    margin-top:10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0003;
+    padding: 20px;
+}
+.role-label{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.role-label select {
+    padding: 8px 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.button-ajouter{
+    border: solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #45a049;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-add-to-zone{
+    border: white solid;
+    border-radius: 30%;
+}
+.btn-add-to-zone:hover{
+    background-color: green;
+    border-color:green;
 }
 
 

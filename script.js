@@ -5,8 +5,7 @@ const unassignedList = document.getElementById('unassignedlist');
 
 // Toggle formulaire
 btnAdd.addEventListener('click', () => {
-    if (formContainer.style.display === 'block') {
-        formContainer.style.display = 'none';
+    if (formContainer.style.display === 'none') {
     } else {
         formContainer.style.display = 'block';
     }
@@ -18,7 +17,7 @@ simpleForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const name = simpleForm.querySelector('input[placeholder="ex:sarra"]').value;
-    const role = simpleForm.querySelector('input[placeholder="ex:techniciens IT"]').value;
+    const role = simpleForm.querySelector('select[name="role"]').value;
     const phone = simpleForm.querySelector('input[placeholder="0625883148"]').value;
     const email = simpleForm.querySelector('input[placeholder="gmail.com"]').value;
     const photo = simpleForm.querySelector('input[placeholder="image"]').value;
@@ -32,7 +31,7 @@ simpleForm.addEventListener('submit', (e) => {
     `;
     unassignedList.appendChild(li);
 
-    // Effacer le formulaire
+
     simpleForm.reset();
 
     // Cacher le formulaire
