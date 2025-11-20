@@ -17,8 +17,27 @@ simpleForm.addEventListener('submit', (e) => {
     const name = simpleForm.querySelector('input[placeholder="ex:sarra"]').value;
     const role = simpleForm.querySelector('select[name="role"]').value;
     const photo = simpleForm.querySelector('input[placeholder="image"]').value;
+    
 
     // Création d'un élément li avec data-role et class pour le nom
+    // --- VALIDATION REGEX ---
+const validators = {
+    name: /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/,
+    email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    phone: /^(?:(?:\+|00)33|0)[1-9](?:\d{8})$/,
+    url: /^https?:\/\/.+\..+/
+};
+
+// Exemple de vérification avant création du li
+const email = simpleForm.querySelector('input[placeholder="gmail.com"]').value;
+const phone = simpleForm.querySelector('input[placeholder="0625883148"]').value;
+const nameInput = simpleForm.querySelector('input[placeholder="ex:sarra"]').value;
+
+if (!validators.name.test(nameInput)) { alert("Nom invalide"); return; }
+if (!validators.email.test(email)) { alert("Email invalide"); return; }
+if (!validators.phone.test(phone)) { alert("Téléphone invalide"); return; }
+if (photo && !validators.url.test(photo)) { alert("URL de photo invalide"); return; }
+
     const li = document.createElement('li');
     li.dataset.role = role;
     li.innerHTML = `
@@ -32,15 +51,7 @@ simpleForm.addEventListener('submit', (e) => {
 
     li.querySelector('.remove').addEventListener('click', () => li.remove());
 });
-// ========================================
-// VALIDATION REGEX
-// ========================================
-const validators = {
-    name: /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/,
-    email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    phone: /^(?:(?:\+|00)33|0)[1-9](?:\d{8})$/,
-    url: /^https?:\/\/.+\..+/
-};
+
 
 // --- Boutons + pour chaque zone ---
 document.querySelectorAll('.btn-add-to-zone').forEach(btn => {
