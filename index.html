@@ -15,11 +15,12 @@
 
     <div class="main-container">
         <div class="sidebar">
-            <button id="btnadd" class="ajoutem"> + ajouter employe</button>
             <section aria-label="unassigned staf" class="unassigned">
                 <h2>unassigned staff</h2>
                 <ul id="unassignedlist" class="person-list"></ul>
             </section>
+            <button id="btnadd" class="ajoutem"> + ajouter employe</button>
+            
             <div id="formcontainer" class="form">
     <form>
 
@@ -48,7 +49,7 @@
 
         <label>
             Email:
-            <input type="email" placeholder="gmail.com">
+            <input type="email" placeholder="gmail.com" required>
         </label>
 
         <label>
@@ -65,7 +66,7 @@
         <div class="etages">
             <div class="zone" data-role="all" data-max="6">
                 <h3>Salle de conférence</h3>
-                <button class="btn-add-to-zone" data-zone="zone-conference" id="sarra">+</button>
+                <button class="btn-add-to-zone" data-zone="zone-conference">+</button>
                 <ul class="zonelist"></ul>
             </div>
 
@@ -99,6 +100,18 @@
                 <ul class="zonelist"></ul>
             </div>
         </div>
+<div class="modal-select" style="display:none;">
+    <div class="modal-content">
+        <h3>Choisir un employé</h3>
+        <ul class="modal-list">
+            <li>Nom Employé 1</li>
+            <li>Nom Employé 2</li>
+            <li>Nom Employé 3</li>
+        </ul>
+        <button class="close-modal">Fermer</button>
+    </div>
+</div>
+
         <script src="script.js"></script>
 
 </body>

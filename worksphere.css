@@ -2,11 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: serif;
 }
 
 header {
     background-color: #A4A4EF;
-    padding: 20px;
+    padding: auto;
+    border-radius: 50px;
+
 }
 
 body {
@@ -16,6 +19,7 @@ body {
 h1 {
     text-align: center;
     margin-top: 10px;
+   
 }
 
 .main-container {
@@ -37,17 +41,22 @@ h1 {
     border: 2px solid #ddd;
     align-items: center;
 }
+h2{
+    font-size:20px ;
+}
 
 .ajoutem {
     padding: 10px 20px;
     background-color: #4caf50;
     border-radius: 8px;
     cursor: pointer;
-    margin-top: 10px;   
+    margin-top: 10px;
+    font-size: large;   
 }
 
 .ajoutem:hover {
     background-color: #45a049;
+    transform:scale(1.1);
 }
 
 .etages {
@@ -108,14 +117,24 @@ h1 {
     text-align: center;
     cursor: pointer;
 }
+.button-ajouter:hover{
+     background: #999;
+     transform: scale(1.1);
+}
 .btn-add-to-zone{
     border: white solid;
-    border-radius: 30%;
+    border-radius:10px;
+    background-color:#A4A4EF;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-.btn-add-to-zone:hover{
-    background-color: green;
-    border-color:green;
-}
+
+
  .remove{
     background-color: red;
     color: white;
@@ -135,6 +154,45 @@ h1 {
     background-color: #e60000;
     transform: scale(1.1);
  }
+ li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+ }
+ .modal-select {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px;
+}
+.modal-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+.modal-list li:hover {
+    background: #eee;
+}
+.close-modal {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
  
 
 /*        RESPONSIVE MOBILE     */
