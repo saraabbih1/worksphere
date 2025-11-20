@@ -20,47 +20,61 @@
                 <ul id="unassignedlist" class="person-list"></ul>
             </section>
             <button id="btnadd" class="ajoutem"> + ajouter employe</button>
-            
+
             <div id="formcontainer" class="form">
-    <form>
+                <form>
 
-        <label>
-            Nom:
-            <input type="text" placeholder="ex:sarra">
-        </label>
+                    <label>
+                        Nom:
+                        <input type="text" placeholder="ex:sarra">
+                    </label>
 
-        <label class="role-label">
-            Role:
-            <select name="role" required>
-                <option value="">-- choisir --</option>
-                <option>réceptionniste</option>
-                <option>technicien IT</option>
-                <option>agent de sécurité</option>
-                <option>Manager</option>
-                <option>Nettoyage</option>
-                <option>Autre</option>
-            </select>
-        </label>
+                    <label class="role-label">
+                        Role:
+                        <select name="role" required>
+                            <option value="">-- choisir --</option>
+                            <option>réceptionniste</option>
+                            <option>technicien IT</option>
+                            <option>agent de sécurité</option>
+                            <option>Manager</option>
+                            <option>Nettoyage</option>
+                            <option>Autre</option>
+                        </select>
+                    </label>
 
-        <label>
-            Téléphone:
-            <input type="tel" placeholder="0625883148" required>
-        </label>
+                    <label>
+                        Téléphone:
+                        <input type="tel" placeholder="0625883148" required>
+                    </label>
 
-        <label>
-            Email:
-            <input type="email" placeholder="gmail.com" required>
-        </label>
+                    <label>
+                        Email:
+                        <input type="email" placeholder="gmail.com" required>
+                    </label>
 
-        <label>
-            Photo:
-            <input type="url" placeholder="image">
-        </label>
+                    <label>
+                        Photo:
+                        <input type="url" placeholder="image">
+                    </label>
 
-        <button class="button-ajouter" type="submit">Ajouter</button>
+                    <!-- SECTION DYNAMIQUE DES EXPERIENCES -->
+                    <div class="experiences-section">
+                        <div class="experiences-header">
+                            <h3>Expériences Professionnelles</h3>
+                            <button type="button" class=" btn-ex" id="addExperienceBtn">
+                                + Ajouter une expérience
+                            </button>
+                        </div>
+                        <div id="experiencesList">
 
-    </form>
-</div>
+                        </div>
+                    </div>
+
+                    <button class="button-ajouter" type="submit">Ajouter</button>
+
+                </form>
+            </div>
+
 
         </div>
         <div class="etages">
@@ -100,17 +114,17 @@
                 <ul class="zonelist"></ul>
             </div>
         </div>
-<div class="modal-select" style="display:none;">
-    <div class="modal-content">
-        <h3>Choisir un employé</h3>
-        <ul class="modal-list">
-            <li>Nom Employé 1</li>
-            <li>Nom Employé 2</li>
-            <li>Nom Employé 3</li>
-        </ul>
-        <button class="close-modal">Fermer</button>
-    </div>
-</div>
+        <div class="modal-select" style="display:none;">
+            <div class="modal-content">
+                <h3>Choisir un employé</h3>
+                <ul class="modal-list">
+                    <li>Nom Employé 1</li>
+                    <li>Nom Employé 2</li>
+                    <li>Nom Employé 3</li>
+                </ul>
+                <button class="close-modal">Fermer</button>
+            </div>
+        </div>
 
         <script src="script.js"></script>
 
