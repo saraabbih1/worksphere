@@ -180,3 +180,44 @@ addExpBtn.addEventListener('click', () => {
 
     expDiv.querySelector('.remove-exp').onclick = () => expDiv.remove();
 });
+// Modal elements
+const infoModal = document.getElementById('infoModal');
+const empName = document.getElementById('empName');
+const empRole = document.getElementById('empRole');
+const empPhone = document.getElementById('empPhone');
+const empEmail = document.getElementById('empEmail');
+const empPhoto = document.getElementById('empPhoto');
+const closeInfoModal = document.getElementById('closeInfoModal');
+
+// Fonction pour afficher infos
+function showEmployeeInfo(empLi) {
+    empName.textContent = "Nom: " + empLi.querySelector('.name').textContent.split(' (')[0];
+    empRole.textContent = "Rôle: " + empLi.dataset.role;
+    empPhone.textContent = "Téléphone: " + empLi.dataset.phone || "Non défini";
+    empEmail.textContent = "Email: " + empLi.dataset.email || "Non défini";
+    empPhoto.src = empLi.querySelector('img')?.src || '';
+
+    infoModal.style.display = 'flex';
+}
+
+// Ajouter data-phone et data-email quand tu crées le Li
+li.dataset.phone = phone;
+li.dataset.email = email;
+
+// Ajouter event listener sur chaque employé
+function addClickEventToEmployee(empLi) {
+    empLi.addEventListener('click', (e) => {
+        // Eviter le clic sur le bouton supprimer
+        if(e.target.classList.contains('remove') || e.target.classList.contains('remove-zone')) return;
+        showEmployeeInfo(empLi);
+    });
+}
+
+// Appliquer au nouvel employé
+addClickEventToEmployee(li);
+
+// Fermer modal
+closeInfoModal.addEventListener('click', () => {
+    infoModal.style.display = 'none';
+});
+
