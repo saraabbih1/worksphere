@@ -21,7 +21,7 @@ h1 {
     margin-top: 10px;
    
 }
-
+/*cette partie pour divise body par 2 partie 300px pour sidebare et 1fr pour les etages*/
 .main-container {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -40,6 +40,7 @@ h1 {
     border-radius: 10px;
     border: 2px solid #ddd;
     align-items: center;
+    box-sizing: border-box; /*pour evite les problemes de largeur*/
 }
 h2{
     font-size:20px ;
