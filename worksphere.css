@@ -202,7 +202,16 @@ h2{
     text-align: center;
     cursor: pointer;
 }
-
+.remove-exp{
+    border: 2px solid #45a049;
+    border-radius: 10px;
+    margin-left:90px ;
+    margin-bottom:10px ;
+    padding: 10px;
+}
+.remove-exp:hover{
+    border: 2px solid #e60000;
+}
  
 
 /*        RESPONSIVE MOBILE     */

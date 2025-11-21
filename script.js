@@ -1,43 +1,47 @@
-// --- Sélection des éléments ---
+
+// Sélection des éléments
+
 const btnAdd = document.getElementById('btnadd');
 const formContainer = document.getElementById('formcontainer');
 const unassignedList = document.getElementById('unassignedlist');
+const simpleForm = formContainer.querySelector('form');
 
-// --- Affichage / Masquage du formulaire ---
+
+// Affichage / Masquage du formulaire
+
 btnAdd.addEventListener('click', () => {
-    formContainer.style.display = (formContainer.style.display === 'block') ? 'none' : 'block';
+    formContainer.style.display =
+        formContainer.style.display === 'block' ? 'none' : 'block';
 });
 
-// --- Gestion du formulaire ---
-const simpleForm = formContainer.querySelector('form');
+
+// VALIDATION REGEX
+const validators = {
+    name: /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/,
+    email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    phone: /^0[5-7]\d{8}$/,  // Maroc
+    url: /^https?:\/\/.+\..+/
+};
+
+
+// Soumission du formulaire
 
 simpleForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = simpleForm.querySelector('input[placeholder="ex:sarra"]').value;
+    const name = simpleForm.querySelector('input[placeholder="ex:sarra"]').value.trim();
     const role = simpleForm.querySelector('select[name="role"]').value;
-    const photo = simpleForm.querySelector('input[placeholder="image"]').value;
-    
+    const email = simpleForm.querySelector('input[placeholder="gmail.com"]').value.trim();
+    const phone = simpleForm.querySelector('input[placeholder="0625883148"]').value.trim();
+    const photo = simpleForm.querySelector('input[placeholder="image"]').value.trim();
 
-    // Création d'un élément li avec data-role et class pour le nom
-    // --- VALIDATION REGEX ---
-const validators = {
-    name: /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/,
-    email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    phone: /^(?:(?:\+|00)33|0)[1-9](?:\d{8})$/,
-    url: /^https?:\/\/.+\..+/
-};
+    // Vérifications
+    if (!validators.name.test(name)) return alert("Nom invalide");
+    if (!validators.email.test(email)) return alert("Email invalide");
+    if (!validators.phone.test(phone)) return alert("Téléphone invalide");
+    if (photo && !validators.url.test(photo)) return alert("URL de photo invalide");
 
-// Exemple de vérification avant création du li
-const email = simpleForm.querySelector('input[placeholder="gmail.com"]').value;
-const phone = simpleForm.querySelector('input[placeholder="0625883148"]').value;
-const nameInput = simpleForm.querySelector('input[placeholder="ex:sarra"]').value;
-
-if (!validators.name.test(nameInput)) { alert("Nom invalide"); return; }
-if (!validators.email.test(email)) { alert("Email invalide"); return; }
-if (!validators.phone.test(phone)) { alert("Téléphone invalide"); return; }
-if (photo && !validators.url.test(photo)) { alert("URL de photo invalide"); return; }
-
+    // Création du Li
     const li = document.createElement('li');
     li.dataset.role = role;
     li.innerHTML = `
@@ -45,21 +49,23 @@ if (photo && !validators.url.test(photo)) { alert("URL de photo invalide"); retu
         <span class="name">${name} (${role})</span>
         <button class="remove">X</button>
     `;
-    unassignedList.appendChild(li);
-    simpleForm.reset();
-    formContainer.style.display = 'none';
 
+    unassignedList.appendChild(li);
+    formContainer.style.display = 'none';
+    simpleForm.reset();
+
+    // Suppression
     li.querySelector('.remove').addEventListener('click', () => li.remove());
 });
 
 
-// --- Boutons + pour chaque zone ---
+// Boutons + pour ajouter à une zone
+
 document.querySelectorAll('.btn-add-to-zone').forEach(btn => {
     btn.addEventListener('click', () => {
         const zone = btn.dataset.zone;
-        const employees = document.querySelectorAll("#unassignedlist li");
 
-        // Création du modal
+        // Modal
         const modal = document.createElement('div');
         modal.className = 'modal-select';
         modal.innerHTML = `
@@ -70,102 +76,107 @@ document.querySelectorAll('.btn-add-to-zone').forEach(btn => {
             </div>
         `;
         document.body.appendChild(modal);
+
         const modalList = modal.querySelector('.modal-list');
+        const employees = document.querySelectorAll("#unassignedlist li");
 
-   employees.forEach((emp, index) => {
-    const role = emp.dataset.role;
+        employees.forEach(emp => {
+            const role = emp.dataset.role;
 
-    if (roleIsAllowed(role, zone)) {
-        const liModal = document.createElement('li');
-        liModal.textContent = emp.querySelector('.name').textContent;
+            if (roleIsAllowed(role, zone)) {
+                const liModal = document.createElement('li');
+                liModal.textContent = emp.querySelector('.name').textContent;
 
-        liModal.addEventListener('click', () => {
-            const zoneList = btn.closest('.zone').querySelector('.zonelist');
-            zoneList.appendChild(emp); // append li الأصلي
-            modal.remove();
+                liModal.addEventListener('click', () => {
+    const zoneList = btn.closest('.zone').querySelector('.zonelist');
+
+    // Ajouter l'employé dans la zone
+    zoneList.appendChild(emp);
+
+    // Ajouter bouton Retirer seulment si non déjà présent
+    if (!emp.querySelector('.remove-zone')) {
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Retirer";
+        removeBtn.className = "remove-zone";
+        removeBtn.style.marginLeft = "10px";
+
+        emp.appendChild(removeBtn);
+
+        //  renvoyer vers la side-bar
+        removeBtn.addEventListener('click', () => {
+            unassignedList.appendChild(emp);
+            removeBtn.remove(); 
         });
-
-        modalList.appendChild(liModal);
     }
+
+    modal.remove();
 });
 
+
+                modalList.appendChild(liModal);
+            }
+        });
 
         modal.querySelector('.close-modal').onclick = () => modal.remove();
     });
 });
 
 
-//fonction de roles
+//accès par rôle
+
 function roleIsAllowed(role, zone) {
     const rules = {
         "zone-reception": ["réceptionniste", "Manager"],
         "zone-serveurs": ["technicien IT", "Manager"],
         "zone-securite": ["agent de sécurité", "Manager"],
-        "zone-conference": ["all"],   
-        "zone-personnel": ["all"],      
-        "zone-archives": ["Manager"]   
+        "zone-conference": ["all"],
+        "zone-personnel": ["all"],
+        "zone-archives": ["Manager"]
     };
 
-    // l'expt de salle d'archive et nettoyage
+    // Empêcher l'accès au Nettoyage aux archives
     if (zone === "zone-archives" && role === "Nettoyage") return false;
 
-    // regle d'accés pour tout 
     const allowed = rules[zone];
+    if (!allowed) return false;
+
     if (allowed.includes("all")) return true;
 
-    //  le role  exist ou bien non 
     return allowed.includes(role);
 }
-// --- Preview photo ---
+
+// Preview Photo
+
 const photoInput = simpleForm.querySelector('input[placeholder="image"]');
 const previewImg = document.createElement('img');
-previewImg.style.width = '80px';
-previewImg.style.height = '80px';
-previewImg.style.borderRadius = '50%';
-previewImg.style.display = 'block';
-previewImg.style.marginBottom = '10px';
+previewImg.style.cssText =
+    "width:80px;height:80px;border-radius:50%;display:block;margin-bottom:10px;";
 photoInput.parentNode.insertBefore(previewImg, photoInput.nextSibling);
 
 photoInput.addEventListener('input', () => {
     previewImg.src = photoInput.value || '';
 });
 
+
+// Gestion des expériences
 const addExpBtn = document.getElementById('addExperienceBtn');
 const experiencesList = document.getElementById('experiencesList');
 
 addExpBtn.addEventListener('click', () => {
-    // new div for ex
     const expDiv = document.createElement('div');
     expDiv.className = 'experience-item';
     expDiv.style.marginBottom = '10px';
 
     expDiv.innerHTML = `
-        <label>
-            Poste:
-            <input type="text" placeholder="Ex: Développeur" required>
-        </label>
-        <label>
-            Entreprise:
-            <input type="text" placeholder="Ex: Google" required>
-        </label>
-        <label>
-            Date début:
-            <input type="date" class="start-date" required>
-        </label>
-        <label>
-            Date fin:
-            <input type="date" class="end-date" required>
-        </label>
+        <label>Poste: <input type="text" placeholder="Ex: Développeur" required></label>
+        <label>Entreprise: <input type="text" placeholder="Ex: Google" required></label>
+        <label>Date début: <input type="date" class="start-date" required></label>
+        <label>Date fin: <input type="date" class="end-date" required></label>
         <button type="button" class="remove-exp">Supprimer</button>
         <hr>
     `;
 
-    //add form to th list  
     experiencesList.appendChild(expDiv);
 
-    // remove ex
-    expDiv.querySelector('.remove-exp').addEventListener('click', () => {
-        expDiv.remove();
-    });
+    expDiv.querySelector('.remove-exp').onclick = () => expDiv.remove();
 });
-

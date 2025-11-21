@@ -9,24 +9,26 @@
 </head>
 
 <body>
+   <!--header-->
     <header>
         <h1>worksphere</h1>
     </header>
-
+<!--unassigned staf-->
     <div class="main-container">
         <div class="sidebar">
             <section aria-label="unassigned staf" class="unassigned">
                 <h2>unassigned staff</h2>
                 <ul id="unassignedlist" class="person-list"></ul>
             </section>
+            
             <button id="btnadd" class="ajoutem"> + ajouter employe</button>
-
+         <!--form d'ajaute-->
             <div id="formcontainer" class="form">
                 <form>
 
                     <label>
                         Nom:
-                        <input type="text" placeholder="ex:sarra">
+                        <input type="nom" placeholder="ex:sarra">
                     </label>
 
                     <label class="role-label">
@@ -44,7 +46,7 @@
 
                     <label>
                         Téléphone:
-                        <input type="tel" placeholder="0625883148" required>
+                        <input type="telephone" placeholder="0625883148" required>
                     </label>
 
                     <label>
@@ -56,11 +58,10 @@
                         Photo:
                         <input type="url" placeholder="image">
                     </label>
-
-                    <!-- SECTION DYNAMIQUE DES EXPERIENCES -->
+                    <!--l'experiences d'employe-->
                     <div class="experiences-section">
                         <div class="experiences-header">
-                            <h3>Expériences Professionnelles</h3>
+                            <h4>Expériences Professionnelles</h4>
                             <button type="button" class=" btn-ex" id="addExperienceBtn">
                                 + Ajouter une expérience
                             </button>
@@ -77,6 +78,7 @@
 
 
         </div>
+        <!--les etages avec les limites de chaque zone-->
         <div class="etages">
             <div class="zone" data-role="all" data-max="6">
                 <h3>Salle de conférence</h3>
@@ -114,6 +116,7 @@
                 <ul class="zonelist"></ul>
             </div>
         </div>
+        <!--modal pour choisir l'employé ajoutont-->
         <div class="modal-select" style="display:none;">
             <div class="modal-content">
                 <h3>Choisir un employé</h3>
