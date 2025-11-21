@@ -27,6 +27,7 @@ h1 {
     grid-template-columns: 300px 1fr;
     gap: 20px;
     padding: 20px;
+    margin-top: 20px;
 }
 
 .sidebar {
@@ -44,6 +45,8 @@ h1 {
 }
 h2{
     font-size:20px ;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .ajoutem {
@@ -64,6 +67,7 @@ h2{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    
 }
 
 .zone {
@@ -74,10 +78,12 @@ h2{
     min-height: 180px;
     background-color: #A4A4EF;
     box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    margin:10px;
+    
 }
-
-
-
+.zone:hover {
+    transform: scale(1.04);
+}
 
 .form input {
     padding: 8px;
